@@ -1,0 +1,12 @@
+@rootURL = http://localhost:5117
+
+
+
+###
+GET {{rootURL}}/api/users
+Accept: application/json
+
+
+###
+GET  {{rootURL}}/api/users/1
+Accept: application/json
