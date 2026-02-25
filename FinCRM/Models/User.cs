@@ -8,7 +8,7 @@
         public string Email { get; set; } = null!;
         public string PasswordHash { get; set; } = null!;
         public int  RoleId { get; set; }
-        public Role Role { get; set; }
+        public Role Role { get; set; } = null!;
         public bool  IsActive { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
 
