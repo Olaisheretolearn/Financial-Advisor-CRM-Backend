@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinCRM.Migrations
 {
     [DbContext(typeof(FinCRMContext))]
-    [Migration("20260225111525_user model added")]
-    partial class usermodeladded
+    [Migration("20260225134431_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,6 +44,20 @@ namespace FinCRM.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Role");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "System Administrator",
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Financial Advisor",
+                            Name = "Advisor"
+                        });
                 });
 
             modelBuilder.Entity("FinCRM.Models.User", b =>
@@ -87,6 +101,32 @@ namespace FinCRM.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Email = "catchmeifyoucan@gmail.com",
+                            FirstName = "Richard",
+                            IsActive = true,
+                            LastName = "Smith",
+                            PasswordHash = "123",
+                            RoleId = 1,
+                            UpdatedAt = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Email = "catchmeifyoucant@gmail.com",
+                            FirstName = "Victory",
+                            IsActive = true,
+                            LastName = "Smither",
+                            PasswordHash = "1234",
+                            RoleId = 2,
+                            UpdatedAt = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0))
+                        });
                 });
 
             modelBuilder.Entity("FinCRM.Models.User", b =>

@@ -51,7 +51,7 @@ namespace FinCRM.Controllers
                   UpdatedAt = DateTimeOffset.UtcNow,
               }
 
-        };  // probably our userRepo dependency will be injected here
+        };  
        
         
         [HttpGet]
