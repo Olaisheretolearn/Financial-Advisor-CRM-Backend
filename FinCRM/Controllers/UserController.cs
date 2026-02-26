@@ -40,5 +40,15 @@ namespace FinCRM.Controllers
             return Ok(user);
         }
 
+        [HttpPost]
+        public async Task<ActionResult<User>> Create(User user)
+        {
+            var createdUser = await _userService.CreateUserAsync(user);
+
+            return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
+        }
+
+
+
     }
 }
