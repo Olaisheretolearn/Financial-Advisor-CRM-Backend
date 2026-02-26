@@ -58,5 +58,23 @@ namespace FinCRM.Application.Services
 
             return existingUser;
         }
+
+        // soft deklete is probably what's best
+        public async Task<bool> DeactivateUserAsync(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+
+            if(user == null)
+            {
+                return false;
+            }
+
+            user.IsActive = false;
+            user.UpdatedAt = DateTimeOffset.UtcNow;
+
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
     }
 }
