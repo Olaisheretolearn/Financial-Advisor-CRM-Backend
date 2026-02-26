@@ -1,4 +1,4 @@
-﻿namespace FinCRM.Models
+﻿namespace FinCRM.Domain
 {
     public class ClientAddress
     {

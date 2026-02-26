@@ -1,6 +1,11 @@
+<<<<<<< HEAD
+using FinCRM.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+=======
 using FinCRM.Data;
 using Microsoft.EntityFrameworkCore;
 using static FinCRM.Data.FinCRMContext;
+>>>>>>> origin/main
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +17,8 @@ builder.Services.AddOpenApi();
 //add migrations 
 
 
+
+builder.Services.AddDbContext<FinCRMContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddDbContext<FinCRMContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
