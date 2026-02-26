@@ -1,11 +1,8 @@
-<<<<<<< HEAD
+
+using FinCRM.Application.Services;
 using FinCRM.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-=======
-using FinCRM.Data;
-using Microsoft.EntityFrameworkCore;
-using static FinCRM.Data.FinCRMContext;
->>>>>>> origin/main
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +15,9 @@ builder.Services.AddOpenApi();
 
 
 
-builder.Services.AddDbContext<FinCRMContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddDbContext<FinCRMContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+builder.Services.AddScoped<UserService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
