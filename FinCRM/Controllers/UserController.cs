@@ -48,7 +48,30 @@ namespace FinCRM.Controllers
             return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult<User>> Update(int id, User user)
+        {
+            var updatedUser = await _userService.UpdateUserAsync(id, user);
 
+            if (updatedUser == null)
+                return NotFound();
+
+            return Ok(updatedUser);
+        }
+
+
+
+        //soft deklete
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var deleted = await _userService.DeactivateUserAsync(id);
+
+            if (!deleted)
+                return NotFound();
+
+            return NoContent();
+        }
 
     }
 }
