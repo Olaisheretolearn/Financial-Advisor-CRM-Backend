@@ -27,7 +27,7 @@ namespace FinCRM.Application.Services
                 .FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        public async Task<User> CreatedUserAsync(User user)
+        public async Task<User> CreateUserAsync(User user)
         {
             user.CreatedAt = DateTimeOffset.UtcNow;
             user.UpdatedAt = DateTimeOffset.UtcNow;
@@ -35,6 +35,28 @@ namespace FinCRM.Application.Services
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return user;
+        }
+
+
+        public async Task<User?> UpdateUserAsync(int id, User updatedUser)
+        {
+            var existingUser = await _context.Users.FindAsync(id);
+
+            if (existingUser == null)
+            {
+                return null;
+            }
+
+            existingUser.FirstName = updatedUser.FirstName;
+            existingUser.LastName = updatedUser.LastName;
+            existingUser.Email = updatedUser.Email;
+            existingUser.RoleId = updatedUser.RoleId;
+            existingUser.IsActive = updatedUser.IsActive;
+            existingUser.UpdatedAt = DateTimeOffset.UtcNow;
+
+            await _context.SaveChangesAsync();
+
+            return existingUser;
         }
     }
 }
