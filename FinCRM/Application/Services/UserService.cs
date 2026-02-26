@@ -26,5 +26,15 @@ namespace FinCRM.Application.Services
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(u => u.Id == id);
         }
+
+        public async Task<User> CreatedUserAsync(User user)
+        {
+            user.CreatedAt = DateTimeOffset.UtcNow;
+            user.UpdatedAt = DateTimeOffset.UtcNow;
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+            return user;
+        }
     }
 }
