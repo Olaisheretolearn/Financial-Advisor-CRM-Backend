@@ -8,7 +8,8 @@ namespace FinCRM.Application.Services
     {
         private readonly FinCRMContext _context;
 
-        public ClientService(FinCRMContext context) {
+        public ClientService(FinCRMContext context)
+        {
             _context = context;
         }
 
@@ -20,8 +21,10 @@ namespace FinCRM.Application.Services
         }
 
 
-     
+
+
+
 
     }
-    }
+}
 
