@@ -39,6 +39,27 @@ namespace FinCRM.Application.Services
 
             return client;
         }
+        public async Task<Client?> UpdateClientAsync(int id, Client updatedClient)
+        {
+            var client = await _context.Clients.FindAsync(id);
+
+            if (client == null)
+                return null;
+
+            client.FirstName = updatedClient.FirstName;
+            client.LastName = updatedClient.LastName;
+            client.Email = updatedClient.Email;
+            client.PhoneNumber = updatedClient.PhoneNumber;
+            client.RiskTolerance = updatedClient.RiskTolerance;
+            client.KycCompleted = updatedClient.KycCompleted;
+            client.IsActive = updatedClient.IsActive;
+            client.UpdatedAt = DateTimeOffset.UtcNow;
+
+            await _context.SaveChangesAsync();
+
+            return client;
+        }
+
 
 
 
