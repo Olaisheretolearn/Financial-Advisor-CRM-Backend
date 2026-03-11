@@ -60,6 +60,19 @@ namespace FinCRM.Application.Services
             return client;
         }
 
+        public async Task<bool> DeleteClientAsync(int id)
+        {
+            var client = await _context.Clients.FindAsync(id);
+
+            if (client == null)
+                return false;
+            client.IsActive = false;
+            client.UpdatedAt = DateTimeOffset.UtcNow;
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
 
 
 
