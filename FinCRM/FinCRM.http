@@ -1,12 +1,25 @@
-@rootURL = http://localhost:5117
+@rootURL = http://localhost:7203
 
 
 
 ###
-GET {{rootURL}}/api/users
+GET {{rootURL}}/api/user
 Accept: application/json
 
 
 ###
-GET  {{rootURL}}/api/users/1
+GET  {{rootURL}}/api/user/1
 Accept: application/json
+
+###
+POST {{rootURL}}/api/user
+Content-Type: application/json
+
+{
+  "firstName": "Kwame",
+  "lastName": "Nkruhma",
+  "email": "kwamehNkruhman@gh.com",
+  "passwordHash": "Iloverichardandtolu",
+  "roleId": 1,
+  "isActive": true
+}

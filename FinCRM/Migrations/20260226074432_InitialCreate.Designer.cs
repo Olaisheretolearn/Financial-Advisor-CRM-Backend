@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinCRM.Migrations
 {
     [DbContext(typeof(FinCRMContext))]
-    [Migration("20260226045603_test")]
-    partial class test
+    [Migration("20260226074432_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
