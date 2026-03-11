@@ -22,6 +22,14 @@ namespace FinCRM.Application.Services
 
 
 
+        public async Task<Client?> GetClientByIdAsync(int id)
+        {
+            return await _context.Clients
+                .Include(c => c.Advisor)
+                .FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+
 
 
 
