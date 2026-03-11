@@ -29,7 +29,16 @@ namespace FinCRM.Application.Services
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 
+        public async Task<Client> CreateClientAsync(Client client)
+        {
+            client.CreatedAt = DateTimeOffset.UtcNow;
+            client.UpdatedAt = DateTimeOffset.UtcNow;
 
+            _context.Clients.Add(client);
+            await _context.SaveChangesAsync();
+
+            return client;
+        }
 
 
 
