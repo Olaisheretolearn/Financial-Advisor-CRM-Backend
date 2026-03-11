@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinCRM.Migrations
 {
     [DbContext(typeof(FinCRMContext))]
-    [Migration("20260226052344_testte")]
-    partial class testte
+    [Migration("20260226083919_SeedRoles")]
+    partial class SeedRoles
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,21 @@ namespace FinCRM.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role");
+                    b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "System Administrator",
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Financial Advisor",
+                            Name = "Advisor"
+                        });
                 });
 
             modelBuilder.Entity("FinCRM.Domain.User", b =>
